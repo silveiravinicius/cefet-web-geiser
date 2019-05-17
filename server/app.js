@@ -64,7 +64,9 @@ function calculateParameters (req) {
 	player 				= _.find(players, function(num) { return req.url.indexOf(num.steamid) != -1 }); //return the steamids of all players
 	playerSteamId 		= _.find(Object.keys(games), function(num) { return num == player.steamid }); //return the player steamid
 	orderedListOfGames 	= _.sortBy(games[playerSteamId].games, 'playtime_forever'); //get the games bought by the player above
-	notPlayedYet 		= 0; //count variable
+  notPlayedYet 		= 0; //count variable
+  
+  notPlayedYet = 0;
 	topFive 			= _.map(_.chain(_.last(orderedListOfGames, [5])).reverse().value(), function (num) { 
 							num.playtime_forever = Math.round(num.playtime_forever/60); 
 							return num; }); //order the list 
